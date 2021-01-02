@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/reformatFile', (req, res) => {
+  console.log('here');
   fs.readFile(`${__dirname}/../numbers.txt`, 'utf-8', (err, data) => {
     if (err) console.warn('error: ', err);
     let dataArray = data.split('\n');
@@ -31,6 +32,17 @@ app.get('/reformatFile', (req, res) => {
     res.send(dataArray.join('\n'));
   })
 });
+
+app.post('/reformattedFile', (req, res) => {
+  let newFile = req.body.content;
+  fs.writeFile('numbersReformatted.txt', newFile, 'utf-8', ((err) => {
+    if (err) {
+      console.warn('error: ', err);
+    }
+    console.log('file saved');
+  }));
+  res.send(newFile);
+})
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`);
