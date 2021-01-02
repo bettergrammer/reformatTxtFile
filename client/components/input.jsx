@@ -15,11 +15,7 @@ class Input extends React.Component {
     $.ajax({
       url: '/reformatFile',
       success: ((response) => {
-        currentFile = response;
-        console.log('state', currentFile);
-        let $dataDiv = $('.data-div');
         response = response.split('\n');
-        console.log('response ', response);
         this.setState({
           currentFile: response
         })

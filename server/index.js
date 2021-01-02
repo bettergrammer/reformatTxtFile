@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/reformatFile', (req, res) => {
   fs.readFile(`${__dirname}/../numbers.txt`, 'utf-8', (err, data) => {
     if (err) console.warn('error: ', err);
-    console.log('data: ', data);
     let dataArray = data.split('\n');
     dataArray = dataArray.map((number) => {
       if (number.slice(-1) === ',') {
@@ -29,7 +28,6 @@ app.get('/reformatFile', (req, res) => {
       number = `(${numbers[0]}${numbers[1]}${numbers[2]})${numbers[3]}${numbers[4]}${numbers[5]}-${numbers[6]}${numbers[7]}${numbers[8]}${numbers[9]}`;
       return number;
     });
-    console.log('dataArray after map: ', dataArray);
     res.send(dataArray.join('\n'));
   })
 });

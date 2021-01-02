@@ -9,3 +9,8 @@
 .data-div {
   margin: 25px;
 }
+
+li {
+  list-style-type: none;
+  margin: 2.5px;
+}
