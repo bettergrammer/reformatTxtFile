@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/reformatFile', (req, res) => {
-  console.log('here');
   fs.readFile(`${__dirname}/../numbers.txt`, 'utf-8', (err, data) => {
     if (err) console.warn('error: ', err);
     let dataArray = data.split('\n');
